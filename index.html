@@ -1,0 +1,172 @@
+.
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Ventas Avanzado</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome para iconos/emojis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plugin datalabels para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <!-- Librerías para exportar a PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>📊 Dashboard de Ventas Avanzado</h1>
+    </header>
+
+    <!-- Botón para exportar a PDF -->
+    <div class="export-container">
+        <button id="exportPdfBtn">Descargar Dashboard en PDF</button>
+    </div>
+
+    <main>
+        <!-- Sección 1: KPIs Principales (Cards) -->
+        <section class="kpi-section">
+            <h2>Resumen General Rápido</h2>
+            <div class="kpi-container">
+                <!-- KPIs generados dinámicamente por JS -->
+                <div class="kpi-card" id="kpiIngresoTotal">
+                    <div class="kpi-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="kpi-content">
+                        <span class="kpi-title">Ingreso Total</span>
+                        <span class="kpi-value">--</span>
+                        <span class="kpi-comparison">--</span>
+                    </div>
+                </div>
+                <div class="kpi-card" id="kpiMargenTotal">
+                    <div class="kpi-icon"><i class="fas fa-piggy-bank"></i></div>
+                    <div class="kpi-content">
+                        <span class="kpi-title">Margen Total</span>
+                        <span class="kpi-value">--</span>
+                        <span class="kpi-comparison">--</span>
+                    </div>
+                </div>
+                <div class="kpi-card" id="kpiMargenPorc">
+                    <div class="kpi-icon"><i class="fas fa-percentage"></i></div>
+                    <div class="kpi-content">
+                        <span class="kpi-title">Margen %</span>
+                        <span class="kpi-value">--</span>
+                        <span class="kpi-indicator">--</span>
+                    </div>
+                </div>
+                <div class="kpi-card" id="kpiCantidad">
+                    <div class="kpi-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="kpi-content">
+                        <span class="kpi-title">Unidades Totales</span>
+                        <span class="kpi-value">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Evolución Anual de Ventas -->
+        <section class="chart-section">
+            <h2>Evolución Anual de Ventas</h2>
+            <div class="chart-container">
+                <canvas id="ventasAnualesChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="crecimientoAnualChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Sección 3: Rentabilidad y Costos -->
+        <section class="chart-section">
+            <h2>Análisis de Rentabilidad</h2>
+            <div class="chart-container large-chart">
+                <canvas id="resumenFinancieroChart"></canvas>
+            </div>
+            <div class="table-container small-table">
+                <h3>Distribución %</h3>
+                <table id="rentabilidadTable">
+                    <thead>
+                        <tr>
+                            <th>Componente</th>
+                            <th>% s/ Ingreso</th>
+                            <th>Indicador</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rentabilidadTableBody">
+                        <!-- Filas generadas por JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sección 4: Detalles Anuales y KPIs Completos -->
+        <section class="table-section full-width">
+            <h2>Detalles Anuales y KPIs Completos</h2>
+            <div class="table-container half-width">
+                <h3>Comparativa Anual Detallada</h3>
+                <table id="anualDetailTable">
+                    <thead>
+                        <tr>
+                            <th>Año</th>
+                            <th>Ventas</th>
+                            <th>Dif. Absoluta</th>
+                            <th>Crecim. (%)</th>
+                            <th>Tendencia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="anualDetailTableBody">
+                        <!-- Filas generadas por JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-container half-width">
+                <h3>Indicadores Clave (KPIs)</h3>
+                <table id="kpiTable">
+                    <thead>
+                        <tr>
+                            <th>Indicador</th>
+                            <th>Valor</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kpiTableBody">
+                        <!-- Filas generadas por JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sección 5: Análisis Extra -->
+        <section class="chart-section">
+            <h2>Análisis Extra</h2>
+            <div class="chart-container">
+                <canvas id="distribucionVentasChart"></canvas>
+                <p class="narrative large-narrative"> 
+                    Este gráfico circular muestra la distribución de las ventas anuales, permitiendo visualizar la
+                    participación de cada año.
+                </p>
+            </div>
+            
+            
+            <div class="chart-container">
+                <canvas id="tendenciaAcumuladaChart"></canvas>
+                <p class="narrative large-narrative"> 
+                  Gráfico combinado que muestra las Ventas Anuales (barras, eje izquierdo) junto con la tasa de Crecimiento Porcentual respecto al año anterior (línea, eje derecho).
+                </p>
+              </div>
+
+
+
+        </section>
+    </main>
+
+    <footer>
+        <p>Dashboard generado con Chart.js</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

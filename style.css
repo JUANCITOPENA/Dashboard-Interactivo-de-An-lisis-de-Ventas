@@ -1,0 +1,291 @@
+/* Reset básico y fuentes */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f2f5; /* Gris más suave */
+    color: #333;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #2c3e50; /* Azul oscuro */
+    color: #ecf0f1; /* Texto claro */
+    padding: 15px 30px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 0;
+  }
+  
+  h2 {
+    color: #2c3e50;
+    text-align: left; /* Títulos de sección a la izquierda */
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #3498db; /* Línea azul */
+    font-size: 1.5em;
+  }
+  
+  h3 {
+    color: #34495e; /* Azul grisáceo */
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    text-align: center;
+  }
+/* Estilo específico para narrativa grande */
+.large-narrative {
+    font-size: 20px !important; /* Usar !important para asegurar que sobreescriba la regla general de .narrative si es necesario */
+    line-height: 1.4; /* Ajustar interlineado si se ve muy apretado */
+    /* Puedes añadir otros estilos aquí si quieres, como font-weight, etc. */
+  }
+  
+  /* Regla original (mantenla como estaba) */
+  .narrative {
+    font-size: 0.9em; /* O el tamaño que tenía antes */
+    color: #555;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  main {
+    padding: 25px;
+    max-width: 1600px; /* Ancho máximo del contenido */
+    margin: 20px auto;
+  }
+  
+  /* Contenedor para el botón de exportación */
+  .export-container {
+    text-align: center;
+    margin: 15px auto;
+  }
+  .export-container button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .export-container button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Secciones Generales */
+  .kpi-section, .chart-section, .table-section {
+    background-color: #ffffff;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    overflow: hidden; /* Evitar desbordes */
+  }
+  
+  /* Contenedores Flexibles */
+  .kpi-container, .chart-section, .table-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Menos espacio entre elementos */
+    justify-content: space-around;
+    align-items: stretch;
+  }
+  
+  /* Estilos KPI Cards */
+  .kpi-container {
+    justify-content: center;
+  }
+  
+  .kpi-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1 1 250px;
+    max-width: 300px;
+    min-width: 220px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .kpi-icon {
+    font-size: 2.5em;
+    color: #3498db;
+    flex-shrink: 0;
+    width: 50px;
+    text-align: center;
+  }
+  
+  .kpi-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .kpi-title {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  .kpi-value {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 3px;
+  }
+  
+  .kpi-comparison, .kpi-indicator {
+    font-size: 0.9em;
+    color: #777;
+  }
+  .kpi-comparison.positive, .kpi-indicator.positive { color: #27ae60; font-weight: bold; }
+  .kpi-comparison.negative, .kpi-indicator.negative { color: #c0392b; font-weight: bold; }
+  .kpi-indicator { font-size: 1.3em; }
+  
+  /* Estilos Gráficos */
+  .chart-container {
+    position: relative;
+    flex: 1 1 45%;
+    min-width: 300px;
+    min-height: 350px;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid #eee;
+  }
+  .chart-container.large-chart {
+    flex: 2 1 60%;
+    min-height: 400px;
+  }
+  
+  /* Estilo para la narrativa interna */
+  .narrative {
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  /* Estilos Tablas */
+  .table-container {
+    flex: 1 1 45%;
+    min-width: 300px;
+    overflow-x: auto;
+  }
+  .table-container.small-table {
+    flex: 1 1 30%;
+    max-width: 400px;
+  }
+  .table-container.half-width {
+    flex: 1 1 48%;
+  }
+  .table-section.full-width {
+    justify-content: space-between;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95em;
+    background-color: #fff;
+  }
+  
+  th, td {
+    border: 1px solid #e0e0e0;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  th {
+    background-color: #ecf0f1;
+    font-weight: 600;
+    color: #34495e;
+    white-space: nowrap;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  tbody tr:hover {
+    background-color: #e9ecef;
+  }
+  
+  td:nth-child(n+2) {
+    text-align: right;
+  }
+  td:first-child {
+    text-align: left;
+    font-weight: 500;
+  }
+  
+  /* Clases condicionales en tablas */
+  .positive { color: #27ae60; font-weight: bold; }
+  .negative { color: #c0392b; font-weight: bold; }
+  .neutral { color: #7f8c8d; }
+  
+  .indicator-cell {
+    font-size: 1.2em;
+    text-align: center !important;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    color: #777;
+    font-size: 0.9em;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 1200px) {
+    .chart-container, .table-container, .kpi-card {
+      flex-basis: 45%;
+    }
+    .chart-container.large-chart {
+      flex-basis: 100%;
+    }
+    .table-container.small-table {
+      flex-basis: 100%;
+      max-width: 100%;
+      margin-top: 20px;
+    }
+    .table-section.full-width .table-container {
+      flex-basis: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h1 { font-size: 1.5em; }
+    h2 { font-size: 1.3em; }
+    .kpi-card, .chart-container, .table-container {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+    .kpi-container, .chart-section, .table-section {
+      gap: 15px;
+    }
+    main { padding: 15px; }
+    header { padding: 10px 15px; }
+  }
